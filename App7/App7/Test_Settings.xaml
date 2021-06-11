@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<page:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:page="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                x:Class="App7.Test_Settings">
+
+
+
+  <ScrollView>
+    <Grid BackgroundColor="White" RowSpacing="80">
+
+            <Grid.ColumnDefinitions>
+
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+
+            </Grid.ColumnDefinitions>
+
+
+            <Grid.RowDefinitions>
+                
+                 <RowDefinition Height="auto"/>
+                 <RowDefinition Height="auto"/>
+                 <RowDefinition Height="auto"/>
+                 <RowDefinition Height="auto"/>
+                 <RowDefinition Height="auto"/>
+                 <RowDefinition Height="auto"/>
+                
+            </Grid.RowDefinitions>
+
+
+                <!-- <Button Text="Close" Grid.Row="0" HorizontalOptions="EndAndExpand" VerticalOptions="Start" BackgroundColor="Black" TextColor="Red" Clicked="Button_Clicked" />-->
+
+
+                <!-- <StackLayout Grid.Row="0" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Start" Spacing="20" Margin="20,0,0,0"> -->
+
+
+                <Label Grid.Column="0"  Grid.Row="0" Text="Status:" TextColor="#1f99ce" FontSize="Large"  FontAttributes="Bold" HorizontalOptions="EndAndExpand"/>
+
+                <Label Grid.Column="1"  Grid.Row="0" Text="{Binding Status,Mode=TwoWay}" TextColor="Green" FontSize="Large" FontAttributes="Bold" Margin="30,0,0,0"/>
+
+
+                <Label Grid.Column="0" Grid.Row="1" Text="Code:" TextColor="#1f99ce" FontSize="Large"  VerticalTextAlignment="Center" FontAttributes="Bold" HorizontalOptions="EndAndExpand"/>
+
+                <Entry     Grid.Row="1" Grid.Column="1" x:Name="Kds" Text="{Binding Kds_Code,Mode=TwoWay}" TextColor="Gray" FontSize="Large"   Margin="30,0,0,0"
+                           Completed="Kds_Code_Entry_Completed" FontAttributes="Bold" />
+
+
+                <Label  Grid.Row="2" Grid.Column="0" Text="IP:" TextColor="#1f99ce" FontSize="Large"  VerticalTextAlignment="Center" FontAttributes="Bold" HorizontalOptions="EndAndExpand"/>
+
+                <Entry  Grid.Row="2" Grid.Column="1" x:Name="Ip" Text="{Binding IpAddress,Mode=TwoWay}" TextColor="Gray" Margin="30,0,0,0"
+                        FontSize="Large" Completed="Ip_Entry_Completed" FontAttributes="Bold"/>
+
+
+                <Label Grid.Row="3" Grid.Column="0" Text="Port:" TextColor="#1f99ce" FontSize="Large"  VerticalTextAlignment="Center" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+
+                <Entry Grid.Column="1"  Grid.Row="3" x:Name="Port" Text="{Binding Port,Mode=TwoWay}" TextColor="Gray"  Margin="30,0,0,0"
+                       Completed="Port_Entry_Completed" FontAttributes="Bold"   FontSize="Large" />
+
+
+                <Label Grid.Row="4" Grid.Column="0" Text="Hide Delayed:" TextColor="#1f99ce" FontSize="Large"  VerticalTextAlignment="Center" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+
+       <!--       <Entry Grid.Column="1"  Grid.Row="4" x:Name="Hide_Delayed" Text="{Binding Hide_Delayed , Mode=TwoWay}" TextColor="Green"  Margin="30,0,0,0"  FontAttributes="Bold" 
+                       FontSize="Large"  Completed="Hide_Delayed_Completed"/>
+
+        -->
+
+                <Label x:Name="MainLabel" Grid.Column="1" Grid.Row="4" FontAttributes="Bold" FontSize="Large" 
+                       TextColor="Gray" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,0,0,35" Text="{Binding Hide_Delayed , Mode=TwoWay}"/>
+
+                <Slider x:Name="TestSlider" Maximum="100" Minimum="5" Grid.Row="4" Grid.Column="1" ValueChanged="Slider_ValueChanged" 
+                        Margin="20,0,0,0" Value="{Binding Hide_Delayed , Mode=TwoWay}"></Slider>
+       
+
+                <Label Text="Orders:" TextColor="#1f99ce" FontSize="Large"  VerticalTextAlignment="Center" FontAttributes="Bold"  Grid.Row="5" Grid.Column="0" HorizontalOptions="EndAndExpand"/>
+
+
+            <StackLayout Orientation="Horizontal" Grid.Row="5" Grid.Column="1"  Margin="30,0,0,0">
+
+                <Button x:Name="Button"  Text="1x" BackgroundColor="{Binding BackgroundColor1,Mode=TwoWay}"  TextColor="White" Command="{Binding Button1}"/>
+
+                <Button x:Name="Button2" Text="2x" BackgroundColor="{Binding BackgroundColor2,Mode=TwoWay}"  TextColor="White" Command="{Binding Button2}"/>
+
+                <Button x:Name="Button3" Text="3x" BackgroundColor="{Binding BackgroundColor3,Mode=TwoWay}"  TextColor="White" Command="{Binding Button3}"/>
+
+                <Button x:Name="Button4" Text="4x" BackgroundColor="{Binding BackgroundColor4,Mode=TwoWay}"  TextColor="White" Command="{Binding Button4}"/>
+
+            </StackLayout>
+
+        </Grid>
+
+  </ScrollView>
+
+</page:PopupPage>

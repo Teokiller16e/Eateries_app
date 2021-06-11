@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<page:PopupPage
+            xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:page="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="App7.QuantityPopUp">
+
+
+    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+
+      
+        <StackLayout  Orientation="Horizontal">
+
+            <Label  x:Name="NameLabel" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" TextColor="White"  FontAttributes="Bold" FontSize="Large"/>
+
+            
+                <Button  Text="-" TextColor="White"  FontAttributes="Bold" Clicked="Minus_Quantity" WidthRequest="115" HeightRequest="80"
+                         BorderRadius="10" FontSize="Large"  BackgroundColor="#626160"/>
+
+
+            <Label x:Name="QuantityEntry" TextColor="#80c140" FontSize="Large" FontAttributes="Bold" WidthRequest="50" 
+                       HeightRequest="50" BackgroundColor="Transparent" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+           
+            
+                <Button  Text="+" TextColor="White" FontSize="Large" FontAttributes="Bold"  WidthRequest="115" HeightRequest="80"
+                         Clicked="Add_Quantity"  BorderRadius="10" BackgroundColor="#626160"/>
+
+                
+            </StackLayout>
+
+        <!-- <Button Text="Ετοιμο"  TextColor="Green" FontSize="Medium" FontAttributes="Bold"  WidthRequest="200" HeightRequest="100" HorizontalOptions="Center"/> -->
+
+        <Button  Text="Ετοιμο" BackgroundColor="#80c140" TextColor="White" FontAttributes="Bold"  HeightRequest="90" WidthRequest="90"
+                 Clicked="Done_Button_Clicked"  BorderWidth = "20" BorderRadius = "25" FontSize="Medium"/>         
+                                         
+
+    </StackLayout>
+
+    
+</page:PopupPage>

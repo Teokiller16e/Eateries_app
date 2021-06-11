@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             xmlns:clv="clr-namespace:App7.CustomListView"
+             x:Class="App7.Done" x:Name="DonePage" Title="Ολοκληρωμένες" 
+             xmlns:local="clr-namespace:App7" xmlns:CustomRender="clr-namespace:App7.CustomRenderer"
+             xmlns:repeater="clr-namespace:Xamarin.CustomControls;assembly=Xamarin.CustomControls.RepeaterView">
+
+ 
+    <ContentPage.ToolbarItems>
+
+        <ToolbarItem  Order="Primary"    Text="Pending"   Clicked="ToolbarItem_Clicked_3"         Icon="Pending.png"/>
+        <ToolbarItem  Order="Primary" />
+        <ToolbarItem  Order="Primary"    Text="Settings"  Clicked="ToolbarItem_Clicked"   Icon="Settings.png" />
+        
+    </ContentPage.ToolbarItems>
+
+
+    
+
+            <Grid>
+      
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="0.85*"/>
+        </Grid.ColumnDefinitions>
+
+     
+
+         
+
+    <!----><flv:FlowListView FlowColumnCount="{Binding Counter2, Mode=TwoWay}" FlowItemsSource="{Binding MainLista}" FlowIsLoadingInfinite="True"
+                             FlowIsLoadingInfiniteEnabled="True" HasUnevenRows="True"   Grid.ColumnSpan="2" >
+
+            <flv:FlowListView.FlowColumnTemplate>
+
+                <DataTemplate>
+
+                    <StackLayout>
+
+                        <Grid   Margin="2,2,2,2" >
+
+                            <Grid.RowDefinitions>
+
+                                <RowDefinition Height="0.04*"/>
+                                <!--   70 -->
+                                <RowDefinition Height="0.01*"/>
+                                <!-- 0.05*   -->
+                                <RowDefinition Height="auto"/>
+
+                                <RowDefinition Height="0.03*"/>
+                                <!-- * / auto   -->
+
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0" BackgroundColor="#dab725">
+
+                                <Grid.ColumnDefinitions>
+
+                                    <ColumnDefinition Width="75"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+
+                                    <RowDefinition Height="*"/>
+
+                                </Grid.RowDefinitions>
+
+
+                                <Frame Margin="5,5,5,5" WidthRequest="65" HeightRequest="40" CornerRadius="10"
+                                   BackgroundColor="#626160" Grid.Column="0" Grid.Row="0" Padding="0">
+
+                                    <Label FontSize="35" HorizontalTextAlignment="Center" Text="{Binding Dailyid}"
+                                       TextColor="White" FontAttributes="Bold" VerticalTextAlignment="Center"/>
+
+                                </Frame>
+
+                                <StackLayout Grid.Column="1" Grid.Row="0" VerticalOptions="CenterAndExpand" HorizontalOptions="Start">
+
+                                    <Label  Text="{Binding Staffname}" TextColor="Black"/>
+
+                                    <Label  Text="{Binding Tablename}" TextColor="Black"/>
+
+                                </StackLayout>
+
+                                <Grid Grid.Column="2" Grid.Row="0">
+
+                                    <Label  Text="{Binding OrderTime , Mode=TwoWay}"  TextColor="White" FontAttributes="Bold" 
+                                      HorizontalTextAlignment="End" VerticalTextAlignment="Center" Margin="5,5,15,5"
+                                      FontSize="Large"/>
+
+                                </Grid>
+
+                            </Grid>
+
+                            <Label   Grid.Row="1" Text="{Binding OrderCustomComment}" TextColor="Orange" FontAttributes="Bold"/>
+
+<!--    -->
+                           
+                                
+                            <repeater:RepeaterView  Grid.Row="2" ItemsSource="{Binding Items}" VerticalOptions="Fill"
+                                                    SelectedItemCommand="{Binding Source={x:Reference DonePage},Path=BindingContext.SelectedItemCommand}"
+                                                    HorizontalOptions="Fill" >
+
+                                <repeater:RepeaterView.ItemTemplate>
+
+                                    <DataTemplate>
+
+                                        <clv:SelectableViewCell>
+
+                                            <clv:SelectableViewCell.CheckView>
+
+                                                <BoxView Color="#FFFFE371"/>
+
+                                            </clv:SelectableViewCell.CheckView>
+
+
+                                            <clv:SelectableViewCell.DataView>
+
+                                                <Grid >
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="auto"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+
+
+                                                    <BoxView Grid.Column="0" BackgroundColor="#80c140" WidthRequest="5" VerticalOptions="FillAndExpand" HorizontalOptions="Fill" />
+
+                                                    <Grid RowSpacing="0" Grid.Column="1">
+
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="auto"/>
+                                                            <RowDefinition Height="auto"/>
+                                                            <RowDefinition Height="auto"/>
+                                                        </Grid.RowDefinitions>
+
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <BoxView  BackgroundColor="Red"  HeightRequest="1" IsVisible="False"
+                                                              HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="0">
+
+                                                            <BoxView.Triggers>
+                                                                <DataTrigger TargetType="BoxView" Binding="{Binding IsCanceled}" Value="true">
+                                                                    <Setter Property="IsVisible" Value="true"/>
+                                                                </DataTrigger>
+                                                            </BoxView.Triggers>
+
+                                                        </BoxView>
+
+
+                                                        <Grid Grid.Row="0" Grid.Column="0" >
+
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*"/>
+                                                                <ColumnDefinition Width="auto"/>
+                                                            </Grid.ColumnDefinitions>
+
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="Auto"/>
+                                                            </Grid.RowDefinitions>
+
+                                                            <Label Grid.Column="0" Grid.Row="0"  TextColor="Black"  LineBreakMode="WordWrap" 
+                                                                   VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"
+                                                                   Text="{Binding . , Converter={StaticResource WeightQtyConverter}}" 
+                                                                   FontSize="Medium"/>
+
+                                                            <Label Grid.Column="1" Grid.Row="0" VerticalOptions="Center" HorizontalOptions="End" LineBreakMode="WordWrap" TextColor="Green" FontAttributes="Bold"  Text="{Binding . , Converter={StaticResource TotalQuantityConvert}}"  >
+                                                                <Label.Triggers>
+
+                                                                    <DataTrigger TargetType="Label" Binding="{Binding TotalQuantity}" Value="0">
+
+                                                                        <Setter Property="IsVisible" Value="false"/>
+
+                                                                    </DataTrigger>
+
+                                                                    <DataTrigger TargetType="Label" Binding="{Binding IsDelivered}" Value="true">
+
+                                                                        <Setter Property="IsVisible" Value="false"/>
+
+                                                                    </DataTrigger>
+
+                                                                </Label.Triggers>
+
+                                                            </Label>
+
+                                                        </Grid>
+
+                                                        <Label Text="{Binding Preferences}" TextColor="Black" HorizontalTextAlignment="Start" VerticalOptions="StartAndExpand"
+                                                        VerticalTextAlignment="Start" Grid.Column="0"  Grid.Row="1" FontSize="Small"/>
+
+
+                                                        <Label Text="{Binding OrderItemCustomComment}" TextColor="Black" 
+                                                              VerticalOptions="StartAndExpand"
+                                                              VerticalTextAlignment="Start" Grid.Column="0"  Grid.Row="2" FontSize="Small"/>
+
+                                                    </Grid>
+                                                </Grid>
+
+
+                                            </clv:SelectableViewCell.DataView>
+
+                                        </clv:SelectableViewCell>
+
+                                    </DataTemplate>
+
+                                </repeater:RepeaterView.ItemTemplate>
+
+                            </repeater:RepeaterView>
+
+
+
+                            <BoxView Grid.Row="3" BackgroundColor="Transparent"/>
+
+                        </Grid>
+
+                    </StackLayout>
+
+                </DataTemplate>
+
+            </flv:FlowListView.FlowColumnTemplate>
+
+        </flv:FlowListView>
+
+
+
+    <StackLayout Grid.Column="0" Orientation="Horizontal" HeightRequest="70" IsEnabled="False" IsVisible="{Binding Connection}" >
+
+            <Image Source="NoConnection"  IsEnabled="False" Aspect="AspectFit" HorizontalOptions="EndAndExpand"/>
+
+        </StackLayout>
+
+    </Grid>
+
+
+
+
+</ContentPage>
+    
